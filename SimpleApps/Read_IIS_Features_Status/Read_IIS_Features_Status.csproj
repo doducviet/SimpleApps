@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3B811EB2-948D-42CF-A4B7-9A48B7FC6B70}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ReadIISFeaturesStatus</RootNamespace>
-    <AssemblyName>ReadIISFeaturesStatus</AssemblyName>
+    <RootNamespace>Read_IIS_Features_Status</RootNamespace>
+    <AssemblyName>Read_IIS_Features_Status</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

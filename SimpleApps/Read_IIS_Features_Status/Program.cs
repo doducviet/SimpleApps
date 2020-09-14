@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using CSharpPlus;
 
 namespace Read_IIS_Features_Status
 {
@@ -40,8 +41,7 @@ namespace Read_IIS_Features_Status
                 }
             }
 
-            List<string> lstIISFeaturesInfo = result.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList();
-            lstIISFeaturesInfo.Remove(string.Empty);
+            List<string> lstIISFeaturesInfo = result.Split(Environment.NewLine);
 
             foreach (string iisFeatureInfo in lstIISFeaturesInfo)
             {

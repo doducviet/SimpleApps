@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpPlus", "CSharpPlus\CS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{95D80293-9671-475E-B6AF-8758A076A5FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read_A5M2_Entities_Info", "Read_A5M2_Entities_Info\Read_A5M2_Entities_Info.csproj", "{97405636-4F38-43B7-A8AA-5230871E9778}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{95D80293-9671-475E-B6AF-8758A076A5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95D80293-9671-475E-B6AF-8758A076A5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95D80293-9671-475E-B6AF-8758A076A5FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97405636-4F38-43B7-A8AA-5230871E9778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97405636-4F38-43B7-A8AA-5230871E9778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97405636-4F38-43B7-A8AA-5230871E9778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97405636-4F38-43B7-A8AA-5230871E9778}.Release|Any CPU.Build.0 = Release|Any CPU		
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generate_Class_Files_From_Database", "Generate_Class_Files_From_Database\Generate_Class_Files_From_Database.csproj", "{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

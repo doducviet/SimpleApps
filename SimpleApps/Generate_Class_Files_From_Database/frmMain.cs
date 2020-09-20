@@ -15,7 +15,7 @@ namespace Generate_Class_Files_From_Database
 {
     public partial class frmMain : Form
     {
-        private string CurrentFolder = String.Empty;
+        private string OutputFolder = String.Empty;
 
         Database database = new Database();
 
@@ -34,7 +34,7 @@ namespace Generate_Class_Files_From_Database
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
-            CurrentFolder = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Output");
+            OutputFolder = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Output");
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Generate_Class_Files_From_Database
         /// <param name="table"></param>
         private void GenerateClassFile(Table table)
         {
-            string outputFolder = Path.Combine(CurrentFolder, table.Schema);
+            string outputFolder = Path.Combine(OutputFolder, table.Schema);
 
             if (!Directory.Exists(outputFolder))
             {
@@ -151,7 +151,7 @@ namespace Generate_Class_Files_From_Database
             sbOutput.AppendLine("");
             sbOutput.AppendLine("namespace " + table.Schema);
             sbOutput.AppendLine("{");
-            sbOutput.AppendLine(    "\tclass " + table.Name);
+            sbOutput.AppendLine(    "\tpublic class " + table.Name);
             sbOutput.AppendLine(    "\t{");
 
             foreach (var column in table.Columns)
@@ -161,7 +161,6 @@ namespace Generate_Class_Files_From_Database
 
             sbOutput.AppendLine(    "\t}");
             sbOutput.AppendLine("}");
-
 
             using (StreamWriter file = new StreamWriter(Path.Combine(outputFolder, table.Name + ".cs"), false))
             {
@@ -261,12 +260,22 @@ namespace Generate_Class_Files_From_Database
             return result;
         }
 
-        private void CheckAll(CheckedListBox checkedListBox, bool check)
+        private void CheckAll(CheckedListBox clb, bool isCheck)
         {
-            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            for (int i = 0; i < clb.Items.Count; i++)
             {
-                checkedListBox.SetItemChecked(i, check);
+                clb.SetItemChecked(i, isCheck);
             }
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckAll(clbTables, true);
+        }
+
+        private void unselectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckAll(clbTables, false);
         }
     }
 

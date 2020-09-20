@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnConnect = new System.Windows.Forms.Button();
             this.tbConnectionString = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.clbTables = new System.Windows.Forms.CheckedListBox();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unselectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -68,6 +74,7 @@
             this.clbTables.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.clbTables.CheckOnClick = true;
             this.clbTables.ColumnWidth = 250;
+            this.clbTables.ContextMenuStrip = this.contextMenuStrip;
             this.clbTables.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.clbTables.FormattingEnabled = true;
             this.clbTables.Location = new System.Drawing.Point(0, 73);
@@ -75,6 +82,28 @@
             this.clbTables.Name = "clbTables";
             this.clbTables.Size = new System.Drawing.Size(534, 377);
             this.clbTables.TabIndex = 5;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectAllToolStripMenuItem,
+            this.unselectAllToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip1";
+            this.contextMenuStrip.Size = new System.Drawing.Size(137, 48);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectAllToolStripMenuItem.Text = "Select All";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
+            // 
+            // unselectAllToolStripMenuItem
+            // 
+            this.unselectAllToolStripMenuItem.Name = "unselectAllToolStripMenuItem";
+            this.unselectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unselectAllToolStripMenuItem.Text = "Unselect All";
+            this.unselectAllToolStripMenuItem.Click += new System.EventHandler(this.unselectAllToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -86,8 +115,9 @@
             this.Controls.Add(this.tbConnectionString);
             this.Controls.Add(this.btnConnect);
             this.Name = "frmMain";
-            this.Text = "Generate class files from database";
+            this.Text = "Generate C# class files from database (SQL Server)";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +129,9 @@
         private System.Windows.Forms.TextBox tbConnectionString;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.CheckedListBox clbTables;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unselectAllToolStripMenuItem;
     }
 }
 

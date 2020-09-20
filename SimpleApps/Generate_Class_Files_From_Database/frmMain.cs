@@ -281,7 +281,7 @@ namespace Generate_Class_Files_From_Database
         }
 
         /// <summary>
-        /// Select/Unselect all itewns
+        /// Select/Unselect all items
         /// </summary>
         /// <param name="clb"></param>
         /// <param name="isCheck"></param>

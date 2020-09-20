@@ -42,16 +42,19 @@
             // 
             // btnConnect
             // 
+            this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConnect.Location = new System.Drawing.Point(332, 6);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(92, 57);
             this.btnConnect.TabIndex = 0;
-            this.btnConnect.Text = "Connect";
+            this.btnConnect.Text = "&Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // tbConnectionString
             // 
+            this.tbConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbConnectionString.Location = new System.Drawing.Point(12, 6);
             this.tbConnectionString.Multiline = true;
             this.tbConnectionString.Name = "tbConnectionString";
@@ -61,21 +64,24 @@
             // 
             // btnGenerate
             // 
+            this.btnGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerate.Location = new System.Drawing.Point(430, 6);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(92, 57);
             this.btnGenerate.TabIndex = 4;
-            this.btnGenerate.Text = "Generate";
+            this.btnGenerate.Text = "&Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // clbTables
             // 
+            this.clbTables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clbTables.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.clbTables.CheckOnClick = true;
             this.clbTables.ColumnWidth = 250;
             this.clbTables.ContextMenuStrip = this.contextMenuStrip;
-            this.clbTables.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.clbTables.FormattingEnabled = true;
             this.clbTables.Location = new System.Drawing.Point(0, 73);
             this.clbTables.MultiColumn = true;
@@ -94,14 +100,14 @@
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // unselectAllToolStripMenuItem
             // 
             this.unselectAllToolStripMenuItem.Name = "unselectAllToolStripMenuItem";
-            this.unselectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unselectAllToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.unselectAllToolStripMenuItem.Text = "Unselect All";
             this.unselectAllToolStripMenuItem.Click += new System.EventHandler(this.unselectAllToolStripMenuItem_Click);
             // 

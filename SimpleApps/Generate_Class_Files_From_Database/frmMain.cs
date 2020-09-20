@@ -88,6 +88,8 @@ namespace Generate_Class_Files_From_Database
                         database.tables[TABLE_SCHEMA + "." + TABLE_NAME] = table;
 
                         column = new Column(COLUMN_NAME, DATA_TYPE);
+
+                        clbTables.Items.Add(table.ToString(), true);
                     }
                     else
                     {
@@ -95,8 +97,6 @@ namespace Generate_Class_Files_From_Database
                         
                         column = new Column(COLUMN_NAME, DATA_TYPE);
                     }
-
-                    clbTables.Items.Add(table.ToString(), true);
                 }
                 #endregion
 
@@ -121,6 +121,8 @@ namespace Generate_Class_Files_From_Database
 
                 GenerateClassFile(table);
             }
+
+            MessageBox.Show("- - - DONE - - -");
         }
 
         /// <summary>

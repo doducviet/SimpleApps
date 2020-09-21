@@ -43,10 +43,10 @@ namespace Generate_Class_Files_From_Database
         /// <param name="e"></param>
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            SqlConnection cnn = new SqlConnection(tbConnectionString.Text.Trim());
-
             try
             {
+                SqlConnection cnn = new SqlConnection(tbConnectionString.Text.Trim());
+
                 // Clear old data
                 Reset();
 
@@ -100,6 +100,11 @@ namespace Generate_Class_Files_From_Database
 
                         column = new Column(COLUMN_NAME, DATA_TYPE);
                     }
+                }
+
+                if (column != null)
+                {
+                    table.Columns.Add(column);
                 }
 
                 #endregion

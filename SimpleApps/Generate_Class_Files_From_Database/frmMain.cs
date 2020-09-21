@@ -60,7 +60,7 @@ namespace Generate_Class_Files_From_Database
                 sbQuery.Append(" FROM");
                 sbQuery.Append("  INFORMATION_SCHEMA.COLUMNS");
                 sbQuery.Append(" ORDER BY ");
-                sbQuery.Append("  TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME");
+                sbQuery.Append("  TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME"); // Change COLUMN_NAME to ORDINAL_POSITION if want the order as same as in table's design
 
                 SqlCommand cmd = new SqlCommand(sbQuery.ToString(), cnn);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

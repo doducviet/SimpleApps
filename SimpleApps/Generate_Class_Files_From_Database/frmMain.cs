@@ -11,7 +11,7 @@ namespace Generate_Class_Files_From_Database
 {
     public partial class frmMain : Form
     {
-        private string OutputFolder = String.Empty;
+        private string outputFolder = String.Empty;
 
         private Database database = null;
 
@@ -30,7 +30,7 @@ namespace Generate_Class_Files_From_Database
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
-            OutputFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Output");
+            outputFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Output");
 
             // Initial
             Reset();
@@ -56,7 +56,7 @@ namespace Generate_Class_Files_From_Database
 
                 StringBuilder sbQuery = new StringBuilder();
                 sbQuery.Append(" SELECT");
-                sbQuery.Append("  TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE");
+                sbQuery.Append("  *");
                 sbQuery.Append(" FROM");
                 sbQuery.Append("  INFORMATION_SCHEMA.COLUMNS");
                 sbQuery.Append(" ORDER BY ");
@@ -75,8 +75,6 @@ namespace Generate_Class_Files_From_Database
                 {
                     string TABLE_SCHEMA = row["TABLE_SCHEMA"].ToString();
                     string TABLE_NAME = row["TABLE_NAME"].ToString();
-                    string COLUMN_NAME = row["COLUMN_NAME"].ToString();
-                    string DATA_TYPE = row["DATA_TYPE"].ToString();
 
                     if (!database.Tables.ContainsKey(TABLE_SCHEMA + "." + TABLE_NAME))
                     {
@@ -90,7 +88,7 @@ namespace Generate_Class_Files_From_Database
                         table.Name = TABLE_NAME;
                         database.Tables[TABLE_SCHEMA + "." + TABLE_NAME] = table;
 
-                        column = new Column(COLUMN_NAME, DATA_TYPE);
+                        column = new Column(row);
 
                         clbTables.Items.Add(table.ToString(), true);
                     }
@@ -98,7 +96,7 @@ namespace Generate_Class_Files_From_Database
                     {
                         table.Columns.Add(column);
 
-                        column = new Column(COLUMN_NAME, DATA_TYPE);
+                        column = new Column(row);
                     }
                 }
 
@@ -153,9 +151,9 @@ namespace Generate_Class_Files_From_Database
         /// <param name="table"></param>
         private void GenerateClassFile(Table table)
         {
-            string COMMENT = string.Empty;
-            string FOLDER = string.Empty;
-            string EXTENSION = string.Empty;
+            string COMMENT;
+            string FOLDER;
+            string EXTENSION;
 
             if (rdoCSharp.Checked)
             {
@@ -170,7 +168,7 @@ namespace Generate_Class_Files_From_Database
                 EXTENSION = ".vb";
             }
 
-            string outputFolder = Path.Combine(OutputFolder, FOLDER, table.Schema);
+            string outputFolder = Path.Combine(this.outputFolder, FOLDER, table.Schema);
 
             if (!Directory.Exists(outputFolder))
             {
@@ -200,6 +198,13 @@ namespace Generate_Class_Files_From_Database
 
                 foreach (var column in table.Columns)
                 {
+                    string attributes = GetAttributesInfo(column);
+
+                    if (!string.IsNullOrEmpty(attributes))
+                    {
+                        sbOutput.AppendLine(attributes);
+                    }
+
                     sbOutput.AppendLine("\t\tpublic " + GetCSharpDataType(column.DataType) + " " + column.Name + " { get; set; }");
                 }
 
@@ -229,11 +234,47 @@ namespace Generate_Class_Files_From_Database
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="column"></param>
+        /// <returns></returns>
+        private string GetAttributesInfo(Column column)
+        {
+            if (column is null)
+            {
+                return string.Empty;
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            //if (column.Nullable)
+            //{
+            //    sb.AppendLine("\t\t[MaybeNull]");
+            //}
+            //else
+            //{
+            //    sb.AppendLine("\t\t[NotNull]");
+            //}
+
+            //if (!string.IsNullOrEmpty(column.DefaultValue))
+            //{
+            //    sb.AppendLine("\t\t[Default(\'" + column.DefaultValue + "\')]");
+            //}
+
+            //if (column.MaxLength != 0)
+            //{
+            //    sb.AppendLine("\t\t[MaxLength(" + column.MaxLength + ")]");
+            //}
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="sqlDataType"></param>
         /// <returns></returns>
         private string GetCSharpDataType(string sqlDataType)
         {
-            string result = string.Empty;
+            string result;
 
             switch (sqlDataType)
             {
@@ -325,7 +366,7 @@ namespace Generate_Class_Files_From_Database
         /// <returns></returns>
         private string GetVBDataType(string sqlDataType)
         {
-            string result = string.Empty;
+            string result;
 
             switch (sqlDataType)
             {
@@ -495,12 +536,30 @@ namespace Generate_Class_Files_From_Database
     class Column
     {
         public string Name { get; set; }
+        public string DefaultValue { get; set; }
+        public bool Nullable { get; set; }
         public string DataType { get; set; }
+        public int MaxLength { get; set; }
 
-        public Column(string name, string dataType)
+        public Column(DataRow row)
         {
-            Name = name;
-            DataType = dataType;
+            Name = row["COLUMN_NAME"].ToString();
+
+            if (row["COLUMN_DEFAULT"] != null)
+            {
+                DefaultValue = row["COLUMN_DEFAULT"].ToString()
+                    .Replace("(", "")
+                    .Replace(")", "")
+                    .Replace("'", "");
+            }
+
+            Nullable = (row["IS_NULLABLE"].ToString() == "YES");
+            DataType = row["DATA_TYPE"].ToString();
+
+            if (row["CHARACTER_MAXIMUM_LENGTH"] != null && !string.IsNullOrEmpty(row["CHARACTER_MAXIMUM_LENGTH"].ToString()))
+            {
+                MaxLength = int.Parse(row["CHARACTER_MAXIMUM_LENGTH"].ToString());
+            }
         }
     }
 }

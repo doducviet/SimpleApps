@@ -154,6 +154,7 @@ namespace Generate_Class_Files_From_Database
             string COMMENT;
             string FOLDER;
             string EXTENSION;
+            string TAB = string.Empty.PadLeft(4);
 
             if (rdoCSharp.Checked)
             {
@@ -193,8 +194,8 @@ namespace Generate_Class_Files_From_Database
                 sbOutput.AppendLine(string.Empty);
                 sbOutput.AppendLine("namespace " + table.Schema);
                 sbOutput.AppendLine("{");
-                sbOutput.AppendLine(    "\tpublic class " + table.Name);
-                sbOutput.AppendLine(    "\t{");
+                sbOutput.AppendLine(TAB + "public class " + table.Name);
+                sbOutput.AppendLine(TAB + "{");
 
                 foreach (var column in table.Columns)
                 {
@@ -205,24 +206,45 @@ namespace Generate_Class_Files_From_Database
                         sbOutput.AppendLine(attributes);
                     }
 
-                    sbOutput.AppendLine("\t\tpublic " + GetCSharpDataType(column.DataType) + " " + column.Name + " { get; set; }");
+                    sbOutput.AppendLine(TAB + TAB + "public " + GetCSharpDataType(column.DataType) + " " + column.Name + " { get; set; }");
                 }
 
-                sbOutput.AppendLine(    "\t}");
+                sbOutput.AppendLine(TAB + "}");
                 sbOutput.AppendLine("}");
             }
             else
             {
-                sbOutput.AppendLine("namespace " + table.Schema);
-                sbOutput.AppendLine("\tPublic Class " + table.Name);
+				StringBuilder sbPrivate = new StringBuilder();
+                string dataType = string.Empty;
+                string privateName = string.Empty;
+				
+                sbOutput.AppendLine("Namespace " + table.Schema);
+                sbOutput.AppendLine(TAB + "Public Class " + table.Name);
+
+                sbOutput.Append("<private defines>");
 
                 foreach (var column in table.Columns)
                 {
-                    sbOutput.AppendLine("\t\tPublic Property " + column.Name + "() AS " + GetVBDataType(column.DataType));
+                    dataType = GetVBDataType(column.DataType);
+                    privateName = "_" + column.Name.Substring(0, 1).ToLower() + column.Name.Substring(1);
+
+                    sbPrivate.AppendLine(TAB + TAB + "Private " + privateName + " As " + dataType);
+					
+                    sbOutput.AppendLine(string.Empty);
+                    sbOutput.AppendLine(TAB + TAB + "Public Property " + column.Name + "() As " + dataType);
+					sbOutput.AppendLine(TAB + TAB + TAB + "Get");
+					sbOutput.AppendLine(TAB + TAB + TAB + TAB + "Return " + privateName);
+					sbOutput.AppendLine(TAB + TAB + TAB + "End Get");
+					sbOutput.AppendLine(TAB + TAB + TAB + "Set");
+                    sbOutput.AppendLine(TAB + TAB + TAB + TAB + privateName + " = Value");
+					sbOutput.AppendLine(TAB + TAB + TAB + "End Set");
+                    sbOutput.AppendLine(TAB + TAB + "End Property");
                 }
 
-                sbOutput.AppendLine("\tEnd Class");
+                sbOutput.AppendLine(TAB + "End Class");
                 sbOutput.AppendLine("End Namespace");
+
+                sbOutput.Replace("<private defines>", sbPrivate.ToString());
             }
 
             using (StreamWriter file = new StreamWriter(Path.Combine(outputFolder, table.Name + EXTENSION), false))
@@ -548,9 +570,9 @@ namespace Generate_Class_Files_From_Database
             if (row["COLUMN_DEFAULT"] != null)
             {
                 DefaultValue = row["COLUMN_DEFAULT"].ToString()
-                    .Replace("(", "")
-                    .Replace(")", "")
-                    .Replace("'", "");
+                    .Replace("(", string.Empty)
+                    .Replace(")", string.Empty)
+                    .Replace("'", string.Empty);
             }
 
             Nullable = (row["IS_NULLABLE"].ToString() == "YES");

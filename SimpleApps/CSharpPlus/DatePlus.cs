@@ -32,34 +32,34 @@ namespace CSharpPlus
             return DateTime.DaysInMonth(iYear, iMonth);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="fromDate"></param>
-        /// <param name="toDate"></param>
-        /// <returns></returns>
-        public static int GetDistance(DateTime fromDate, DateTime toDate)
-        {
-            return toDate.DayOfYear - fromDate.DayOfYear;
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="fromDate"></param>
+        ///// <param name="toDate"></param>
+        ///// <returns></returns>
+        //public static int GetDistance(DateTime fromDate, DateTime toDate)
+        //{
+        //    return toDate.DayOfYear - fromDate.DayOfYear;
+        //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="iFromYear"></param>
-        /// <param name="iFromMonth"></param>
-        /// <param name="iFromDay"></param>
-        /// <param name="iToYear"></param>
-        /// <param name="iToMonth"></param>
-        /// <param name="iToDay"></param>
-        /// <returns></returns>
-        public static int GetDistance(int iFromYear, int iFromMonth, int iFromDay, int iToYear, int iToMonth, int iToDay)
-        {
-            DateTime startDate = new DateTime(iFromYear, iFromMonth, iFromDay);
-            DateTime toDate = new DateTime(iToYear, iToMonth, iToDay);
-
-            return GetDistance(startDate, toDate);
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="iFromYear"></param>
+        ///// <param name="iFromMonth"></param>
+        ///// <param name="iFromDay"></param>
+        ///// <param name="iToYear"></param>
+        ///// <param name="iToMonth"></param>
+        ///// <param name="iToDay"></param>
+        ///// <returns></returns>
+        //public static int GetDistance(int iFromYear, int iFromMonth, int iFromDay, int iToYear, int iToMonth, int iToDay)
+        //{
+        //    DateTime startDate = new DateTime(iFromYear, iFromMonth, iFromDay);
+        //    DateTime toDate = new DateTime(iToYear, iToMonth, iToDay);
+        //
+        //    return GetDistance(startDate, toDate);
+        //}
 
         /// <summary>
         /// Get info of the day
@@ -160,7 +160,7 @@ namespace CSharpPlus
         {
             DateTime dateTime = new DateTime(iYear, iMonth, iStartDay);
 
-            for (; ; )
+            for ( ; ; )
             {
                 if (dateTime.DayOfWeek == dayOfWeek)
                 {

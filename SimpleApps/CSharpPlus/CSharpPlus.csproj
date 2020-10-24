@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatePlus.cs" />
     <Compile Include="ObjectPlus.cs" />
     <Compile Include="StringPlus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

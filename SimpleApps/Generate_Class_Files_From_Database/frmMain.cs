@@ -228,10 +228,10 @@ namespace Generate_Class_Files_From_Database
             }
             else
             {
-				StringBuilder sbPrivate = new StringBuilder();
+                StringBuilder sbPrivate = new StringBuilder();
                 string dataType = string.Empty;
                 string privateName = string.Empty;
-				
+
                 sbOutput.AppendLine("Namespace " + table.Schema);
                 sbOutput.AppendLine(TAB + "Public Class " + table.Name);
 
@@ -243,15 +243,15 @@ namespace Generate_Class_Files_From_Database
                     privateName = "_" + column.Name.Substring(0, 1).ToLower() + column.Name.Substring(1);
 
                     sbPrivate.AppendLine(TAB + TAB + "Private " + privateName + " As " + dataType);
-					
+
                     sbOutput.AppendLine(string.Empty);
                     sbOutput.AppendLine(TAB + TAB + "Public Property " + column.Name + "() As " + dataType);
-					sbOutput.AppendLine(TAB + TAB + TAB + "Get");
-					sbOutput.AppendLine(TAB + TAB + TAB + TAB + "Return " + privateName);
-					sbOutput.AppendLine(TAB + TAB + TAB + "End Get");
-					sbOutput.AppendLine(TAB + TAB + TAB + "Set");
+                    sbOutput.AppendLine(TAB + TAB + TAB + "Get");
+                    sbOutput.AppendLine(TAB + TAB + TAB + TAB + "Return " + privateName);
+                    sbOutput.AppendLine(TAB + TAB + TAB + "End Get");
+                    sbOutput.AppendLine(TAB + TAB + TAB + "Set");
                     sbOutput.AppendLine(TAB + TAB + TAB + TAB + privateName + " = Value");
-					sbOutput.AppendLine(TAB + TAB + TAB + "End Set");
+                    sbOutput.AppendLine(TAB + TAB + TAB + "End Set");
                     sbOutput.AppendLine(TAB + TAB + "End Property");
                 }
 

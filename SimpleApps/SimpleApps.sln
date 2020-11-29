@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read_A5M2_Entities_Info", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generate_Class_Files_From_Database", "Generate_Class_Files_From_Database\Generate_Class_Files_From_Database.csproj", "{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Get_File_Hash", "Get_File_Hash\Get_File_Hash.csproj", "{BC015410-E3A5-4ED7-8373-C45508C14A79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE7DB1CA-2EC5-4A3C-8FC1-BC43DBC08A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC015410-E3A5-4ED7-8373-C45508C14A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC015410-E3A5-4ED7-8373-C45508C14A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC015410-E3A5-4ED7-8373-C45508C14A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC015410-E3A5-4ED7-8373-C45508C14A79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

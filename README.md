@@ -37,3 +37,9 @@ Sample .a5er file can get from this link : https://ftp.vector.co.jp/73/07/2526/a
 ```
 Read status of all IIS's features. ON means installed, otherwise not installed yet.
 ```
+
+### ● Remove_Current_Folder_From_The_System_Path.exe
+```
+Put the Remove_Current_Folder_From_The_System_Path.exe info the folder
+which you want to remove from the system's path and run it.
+```

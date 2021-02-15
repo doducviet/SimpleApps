@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generate_Class_Files_From_D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Get_File_Hash", "Get_File_Hash\Get_File_Hash.csproj", "{BC015410-E3A5-4ED7-8373-C45508C14A79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remove_Current_Folder_From_The_System_Path", "Remove_Current_Folder_From_The_System_Path\Remove_Current_Folder_From_The_System_Path.csproj", "{5D04AE72-54E5-41D0-99F9-1B2AEEF5F2DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{BC015410-E3A5-4ED7-8373-C45508C14A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC015410-E3A5-4ED7-8373-C45508C14A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC015410-E3A5-4ED7-8373-C45508C14A79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D04AE72-54E5-41D0-99F9-1B2AEEF5F2DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D04AE72-54E5-41D0-99F9-1B2AEEF5F2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D04AE72-54E5-41D0-99F9-1B2AEEF5F2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D04AE72-54E5-41D0-99F9-1B2AEEF5F2DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
